@@ -1,0 +1,8 @@
+---
+- name: Create User
+  user: name=ak-sahli password={{user_password}} groups=sudo append=yes shell=/bin/bash
+
+- name: Add User Authorized Key
+  authorized_key: user=ak-sahli
+                  key="{{user_public_key}}"
+                  state=present
